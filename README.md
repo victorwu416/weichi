@@ -1,1 +1,3 @@
-"# This is my README" 
+Wei Chi Android App
+
+
