@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical"    
+    tools:context=".MainActivity" >
+             	
+    <EditText
+        android:id="@+id/editText_who"
+        android:hint="@string/hint_who"                     
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"        
+        style="@style/StyleEditText"        
+        android:focusable="false" />
+
+    <Spinner
+        android:id="@+id/spinner_meal"                
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"                        
+        android:entries="@array/array_meal_values" />    
+    
+    <Spinner
+        android:id="@+id/spinner_when"               
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:entries="@array/array_when_values" />
+    
+    <EditText        
+        android:id="@+id/editText_where"
+        android:hint="@string/hint_where"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"                                
+        style="@style/StyleEditText" />
+
+	<TextView
+        android:id="@+id/textView_message"                
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_marginTop="16dp"
+        style="@style/StyleMessage" />
+
+	<Button
+	    android:id="@+id/button_send_message"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="16dp"	    
+	    android:layout_gravity="right"	    
+	    android:text="@string/button_send_message" />
+                
+</LinearLayout>

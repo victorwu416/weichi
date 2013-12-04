@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"	
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:paddingTop="5dp"
+	android:paddingBottom="5dp"
+	android:paddingLeft="10dp"
+	android:paddingRight="10dp"	
+	android:textSize="22sp" />
+
+<!-- 
+<style name="TextAppearance.Large">
+    <item name="android:textSize">22sp</item>
+</style>
+
+<style name="TextAppearance.Medium">
+    <item name="android:textSize">18sp</item>
+</style>
+
+<style name="TextAppearance.Small">
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">?textColorSecondary</item>
+</style>
+ -->

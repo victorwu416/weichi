@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">围吃</string>
+    
+    <string name="action_settings">Settings</string>
+
+    <string name="hint_who">食神周星驰</string>
+	<string name="text_contact">%1$s 电话: %2$s</string>    
+    	 	
+    <string-array name="array_meal_values">
+        <item>晚饭</item>        
+        <item>夜宵</item>
+        <item>早餐</item>
+        <item>午餐</item>
+        <item>下午茶</item>        
+    </string-array>
+        
+    <string-array name="array_when_values">
+        <item>今天</item>
+        <item>明天</item>
+        <item>下星期</item>        
+    </string-array>
+
+   	<string-array name="array_meal_phrases">
+	    <item>今晚一起去吃饭吧!</item>
+	    <item>明晚吃饭, 有兴趣吗?</item>
+	    <item>下星期有没有空吃晚饭?</item>
+	    
+	    <item>今晚吃夜宵?</item>
+	    <item>明晚我们去吃夜宵吧!</item>
+	    <item>下星期去吃夜宵?</item>
+	    
+	    <item>今天早上吃早饭?</item>
+	    <item>明早一起吃早餐?</item>
+	    <item>下星期有空吃早餐吗?</item>
+	    
+	    <item>今天一起吃午饭吧!</item>
+	    <item>明天吃午饭?</item>
+	    <item>下星期找时间吃午餐!</item>
+	    
+	    <item>今天一起去下午茶吧!</item>
+	    <item>明天下午茶吧!</item>
+	    <item>下星期有没有空吃下午茶?</item>	    	    
+	</string-array>	  
+    
+    <string name="hint_where">麦当劳</string>
+       
+    <string name="where_phrase">在%1$s.</string>
+    
+    <string name="button_send_message">发送短信</string>
+    
+    <string name="pick_a_send_contact">选择個發送人.</string>
+    
+</resources>
