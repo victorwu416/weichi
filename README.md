@@ -1,3 +1,1 @@
 Wei Chi Android App
-
-
