@@ -1,5 +1,7 @@
 package com.victorkywu.weichi;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,30 +22,41 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	Activity thisActivity = this;
+	
 	private static final int PICK_CONTACT_REQUEST_CODE = 0; 
-			
-	private String whoPhoneNumber = null;	
+					
+	private String whoPhoneNumber = null;
+	
+	private ArrayList<String> whoDisplayNames;
+	private ArrayList<String> whoPhoneNumbers;
+	
+	private ArrayList<ContactItem> whoContactItems;
 	
 	private String[] mealValues;
 	private String[] whenValues;
-	private String[] mealPhrases;	
+	private String[] mealPhrases;		
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	
+		Log.v("vwu", "oncreate");
+		
 		mealValues = getResources().getStringArray(R.array.array_meal_values);
 		whenValues = getResources().getStringArray(R.array.array_when_values);
 		mealPhrases = getResources().getStringArray(R.array.array_meal_phrases);							
 		
-		setupEditTextWho(); 		 
+		setupEditTextWho(); 
+		setupEditTextMulti();
 		setupSpinnerMeal();
 		setupSpinnerWhen();
 		setupEditTextWhere();		
 		setupButtonSendMessage();
-		
+						
 		updateMessage();
+		//readContacts();
 	}
 		
 	private void setupEditTextWho() {
@@ -55,6 +69,19 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+
+	private void setupEditTextMulti() {
+		final EditText editTextMutli = (EditText) findViewById(R.id.editText_multi);
+		
+		Log.v("vwu", "clicked into multi.");				
+				
+		editTextMutli.setOnClickListener(new EditText.OnClickListener() {
+			public void onClick(View view) {																
+				Intent intentContactsPicker = new Intent(thisActivity, ContactItemsPickerActivity.class);								
+				startActivity(intentContactsPicker);							
+			}
+		});
+	}	
 	
 	private void setupSpinnerMeal() {
 		Spinner spinnerMeal = (Spinner) findViewById(R.id.spinner_meal);
@@ -151,6 +178,49 @@ public class MainActivity extends Activity {
 
 		TextView textViewMessage = (TextView) findViewById(R.id.textView_message);
 		textViewMessage.setText(updatedMessage);									
+	}
+	
+	private void readContacts() {
+		whoDisplayNames = new ArrayList<String>();
+		whoPhoneNumbers = new ArrayList<String>();
+		whoContactItems = new ArrayList<ContactItem>();
+		
+		Cursor cursorContacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC"); 
+		while (cursorContacts.moveToNext()) {
+			String contactId = cursorContacts.getString(cursorContacts.getColumnIndex(ContactsContract.Contacts._ID));
+			
+			//Log.v("vwu", "contact Id is " + contactId);
+			
+			String hasPhoneNumber = cursorContacts.getString(cursorContacts.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+			
+			// Get contacts only of those that have phone number(s).
+			if ( hasPhoneNumber.equals("1") || Boolean.parseBoolean(hasPhoneNumber) ) {
+				String displayName = cursorContacts.getString(cursorContacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+				
+				// Log.v("vwu", "displayName is " + displayName);
+				
+				// Get phone numbers of this contact, that are mobile phone numbers.
+				Cursor cursorPhoneNumbers = getContentResolver().query(
+						ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, 
+						ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ contactId, null, null); 
+				
+				while (cursorPhoneNumbers.moveToNext()) {							
+					int phoneNumberType = cursorPhoneNumbers.getInt(cursorPhoneNumbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
+					boolean isMobile = ( (phoneNumberType == ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE) || 
+								         (phoneNumberType == ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE) );
+					if (isMobile) {
+						String phoneNumber = cursorPhoneNumbers.getString(cursorPhoneNumbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						//Log.v("vwu", "displayName | phoneNumber = " + displayName + " | " + phoneNumber);						
+						whoDisplayNames.add(displayName);
+						whoPhoneNumbers.add(phoneNumber);
+						
+						whoContactItems.add(new ContactItem(displayName, phoneNumber, false));
+					}									          
+				}
+				cursorPhoneNumbers.close();						
+			}														
+		} // while (cursorContacts.moveToNext())
+		cursorContacts.close();		
 	}
 	
 	@Override  

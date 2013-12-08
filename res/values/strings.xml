@@ -50,6 +50,6 @@
     
     <string name="button_send_message">发送短信</string>
     
-    <string name="pick_a_send_contact">选择個發送人.</string>
+    <string name="pick_a_send_contact">选择發送人.</string>
     
 </resources>

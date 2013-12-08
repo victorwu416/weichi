@@ -16,6 +16,15 @@
         style="@style/StyleEditText"        
         android:focusable="false" />
 
+    <EditText
+        android:id="@+id/editText_multi"
+        android:hint="@string/hint_who"                     
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"        
+        style="@style/StyleEditText"        
+        android:focusable="false" />
+        
     <Spinner
         android:id="@+id/spinner_meal"                
         android:layout_width="fill_parent"
