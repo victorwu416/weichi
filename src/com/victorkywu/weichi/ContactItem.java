@@ -3,12 +3,11 @@ package com.victorkywu.weichi;
 public class ContactItem {
 	String displayName;
 	String phoneNumber;
-	boolean isChecked;
+	boolean isPicked;
 	
-	public ContactItem(String displayName, String phoneNumber, boolean isChecked) {
+	public ContactItem(String displayName, String phoneNumber, boolean isPicked) {
 		this.displayName = displayName;
 		this.phoneNumber = phoneNumber;
-		this.isChecked = isChecked;
-		
+		this.isPicked = isPicked;		
 	}
 }

@@ -1,42 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="wrap_content"    
     android:orientation="horizontal" >
-
+    
     <CheckBox
-        android:id="@+id/cbBox"
+        android:id="@+id/checkBox_picked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical" >
-    </CheckBox>
-
+        android:layout_gravity="center_vertical" />
+        
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"        
         android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/tvDescr"
+    	<TextView
+            android:id="@+id/textView_displayName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text=""
-            android:textSize="20sp" >
-        </TextView>
-
+            android:layout_height="wrap_content"                        
+            android:textSize="22sp" />
+            
         <TextView
-            android:id="@+id/tvPrice"
+            android:id="@+id/textView_phoneNumber"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="" >
-        </TextView>
-        
-    </LinearLayout>
+            android:layout_height="wrap_content"                        
+            android:textSize="16sp" />
 
-
+	</LinearLayout>    
 </LinearLayout>

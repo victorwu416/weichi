@@ -8,7 +8,7 @@
     tools:context=".ContactItemsPickerActivity" >
              			                        
     <ListView
-    	android:id="@+id/lvMain"
+    	android:id="@+id/listView_contacts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >

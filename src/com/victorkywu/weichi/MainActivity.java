@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 	Activity thisActivity = this;
 	
 	private static final int PICK_CONTACT_REQUEST_CODE = 0; 
+	private static final int PICK_CONTACTS_REQUEST_CODE = 1;
 					
 	private String whoPhoneNumber = null;
 	
@@ -64,21 +65,21 @@ public class MainActivity extends Activity {
 		editTextWho.setOnClickListener(new EditText.OnClickListener() {
 			public void onClick(View view) {				
 				Intent intentPickContact = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);								
-				intentPickContact.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+				intentPickContact.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);				
 				startActivityForResult(intentPickContact, PICK_CONTACT_REQUEST_CODE);
 			}
 		});
 	}
 
 	private void setupEditTextMulti() {
-		final EditText editTextMutli = (EditText) findViewById(R.id.editText_multi);
-		
-		Log.v("vwu", "clicked into multi.");				
-				
+		final EditText editTextMutli = (EditText) findViewById(R.id.editText_multi);		
 		editTextMutli.setOnClickListener(new EditText.OnClickListener() {
-			public void onClick(View view) {																
-				Intent intentContactsPicker = new Intent(thisActivity, ContactItemsPickerActivity.class);								
-				startActivity(intentContactsPicker);							
+			public void onClick(View view) {	
+				
+				Log.v("vwu", "sending to contacts picker activity.");
+				
+				Intent intentContactsPicker = new Intent(thisActivity, ContactItemsPickerActivity.class);				
+				startActivityForResult(intentContactsPicker, PICK_CONTACTS_REQUEST_CODE);							
 			}
 		});
 	}	
@@ -224,11 +225,14 @@ public class MainActivity extends Activity {
 	}
 	
 	@Override  
-	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		Log.v("vwu", "onactivityresult");
+		
 		if (requestCode == PICK_CONTACT_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
 				
-                Uri pickedContact = intent.getData();               
+                Uri pickedContact = data.getData();               
                                 
                 Cursor cursor = getContentResolver().query(pickedContact, null, null, null, null);
                 cursor.moveToFirst();
@@ -249,7 +253,47 @@ public class MainActivity extends Activity {
                 Button buttonSendMessage = (Button) findViewById(R.id.button_send_message);
                 buttonSendMessage.setEnabled(true);
             }
-        }		
+        }
+		if (requestCode == PICK_CONTACTS_REQUEST_CODE) {
+			if (resultCode == RESULT_OK) {
+				
+				Log.v("vwu", "returned back");
+				
+				ArrayList<String> pickedDisplayNames = data.getStringArrayListExtra("pickedDisplayNames");
+				ArrayList<String> pickedPhoneNumbers = data.getStringArrayListExtra("pickedPhoneNumbers");
+				
+				for (String pickedDisplayName : pickedDisplayNames) {
+					Log.v("vwu", "pickedDisplayName = " + pickedDisplayName);
+				}
+				for (String pickedPhoneNumber : pickedPhoneNumbers) {
+					Log.v("vwu", "pickedPhoneNumber = " + pickedPhoneNumber);
+				}
+				
+				
+                //Uri pickedContact = intent.getData();               
+                                                
+                final EditText editTextWhoMulti = (EditText) findViewById(R.id.editText_multi);
+                editTextWhoMulti.setText("");
+                int pickedContactsSize = Math.min(pickedDisplayNames.size(), pickedPhoneNumbers.size());
+                String textContact;
+                for (int index = 0; index < pickedContactsSize; index++) {
+                	textContact = pickedDisplayNames.get(index) + ": " + pickedPhoneNumbers.get(index);
+                	if (editTextWhoMulti.getText().toString().equals("")) {
+                		editTextWhoMulti.setText(textContact);
+                	} else {
+                		editTextWhoMulti.setText(editTextWhoMulti.getText() + " | " + textContact);	
+                	}                	
+                }
+                
+                
+                //
+                
+                //whoPhoneNumber = pickedPhoneNumber; 
+                
+                Button buttonSendMessage = (Button) findViewById(R.id.button_send_message);
+                buttonSendMessage.setEnabled(true);
+            }
+        }
 	}
 	
 	/*

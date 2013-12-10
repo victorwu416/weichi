@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 public class ContactItemsListApdapter extends BaseAdapter {
@@ -46,13 +48,23 @@ public class ContactItemsListApdapter extends BaseAdapter {
 
         ContactItem contactItem = (ContactItem) getItem(position);
 
-        ((TextView) view.findViewById(R.id.tvDescr)).setText(contactItem.displayName);
-        ((TextView) view.findViewById(R.id.tvPrice)).setText(contactItem.phoneNumber + "");        
+        ((TextView) view.findViewById(R.id.textView_displayName)).setText(contactItem.displayName);
+        ((TextView) view.findViewById(R.id.textView_phoneNumber)).setText(contactItem.phoneNumber + "");        
 
-        CheckBox cbBuy = (CheckBox) view.findViewById(R.id.cbBox);        
-        //cbBuy.setOnCheckedChangeListener(myCheckChangList);
-        cbBuy.setTag(position);
-        cbBuy.setChecked(contactItem.isChecked);
+        CheckBox checkBoxPicked = (CheckBox) view.findViewById(R.id.checkBox_picked);        
+        checkBoxPicked.setOnCheckedChangeListener(onCheckedChangeListener);
+        checkBoxPicked.setTag(position);
+        checkBoxPicked.setChecked(contactItem.isPicked);
+        
         return view;
-    }    
+    }
+
+    
+    OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
+    	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    		int position = (Integer) buttonView.getTag();
+    		((ContactItem) getItem(position)).isPicked = isChecked;
+        }
+    };
+    
 }
