@@ -14,9 +14,9 @@ import android.widget.TextView;
 
 public class ContactItemsListApdapter extends BaseAdapter {
 
-    Context context;
-    LayoutInflater layoutInflater;
-    ArrayList<ContactItem> contactItems;
+    private Context context;
+    private LayoutInflater layoutInflater;
+    private ArrayList<ContactItem> contactItems;
 	
 	public ContactItemsListApdapter(Context context, ArrayList<ContactItem> contactItems) {		
 		this.context = context;
@@ -58,13 +58,12 @@ public class ContactItemsListApdapter extends BaseAdapter {
         
         return view;
     }
-
     
     OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
-    	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    	@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     		int position = (Integer) buttonView.getTag();
     		((ContactItem) getItem(position)).isPicked = isChecked;
         }
-    };
-    
+    };   
 }

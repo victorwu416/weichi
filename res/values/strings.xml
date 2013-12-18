@@ -6,8 +6,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="hint_who">食神周星驰</string>
-	<string name="text_contact">%1$s 电话: %2$s</string>    
-    	 	
+        	 	
     <string-array name="array_meal_values">
         <item>晚饭</item>        
         <item>夜宵</item>
@@ -21,7 +20,7 @@
         <item>明天</item>
         <item>下星期</item>        
     </string-array>
-
+    
    	<string-array name="array_meal_phrases">
 	    <item>今晚一起去吃饭吧!</item>
 	    <item>明晚吃饭, 有兴趣吗?</item>
@@ -45,12 +44,35 @@
 	</string-array>	  
     
     <string name="hint_where">麦当劳</string>
-       
+            
     <string name="where_phrase">在%1$s.</string>
     
-    <string name="button_send_message">发送短信</string>
+    <string-array name="array_currency_values">
+        <item>¥</item>
+        <item>$</item>
+        <item>没有</item>
+	</string-array>
     
-    <string name="pick_a_send_contact">选择發送人.</string>
+    <string-array name="array_rmb_cost_phrases">
+        <item>超便宜.</item>
+        <item>一个人大概 ¥15.</item>
+        <item>一个人大概 ¥30.</item>        
+        <item>一个人大概 ¥100.</item>
+        <item>一个人大概 ¥500.</item>
+        <item>价钱比较贵一点.</item>
+    </string-array>
+    
+    <string-array name="array_dollar_cost_phrases">
+        <item>超便宜.</item>
+        <item>一个人大概 $5.</item>
+        <item>一个人大概 $10.</item>
+        <item>一个人大概 $20.</item>
+        <item>一个人大概 $50.</item>
+        <item>一个人大概 $100.</item>
+        <item>价钱比较贵一点.</item>
+    </string-array>
+        
+    <string name="button_send_message">发送短信</string>
     
     <string name="pick_contacts">选择联系人</string>
     

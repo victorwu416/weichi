@@ -10,11 +10,11 @@
 
     
     <style name="StyleEditText">
-		<item name="android:textSize">22sp</item>
+		<item name="android:textSize">20sp</item>
     </style>
     
     <style name="StyleMessage">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/color_message</item>               
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>              

@@ -1,27 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"    
+    tools:context=".MainActivity" >
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:orientation="vertical"    
-    tools:context=".MainActivity" >
-             	
+    android:layout_marginRight="16dp"    
+    android:orientation="vertical" >
+    	
     <EditText
         android:id="@+id/editText_who"
         android:hint="@string/hint_who"                     
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"        
-        style="@style/StyleEditText"        
-        android:focusable="false" />
-
-    <EditText
-        android:id="@+id/editText_multi"
-        android:hint="@string/hint_who"                     
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"        
+        android:layout_marginTop="8dp"                
         style="@style/StyleEditText"        
         android:focusable="false" />
         
@@ -29,14 +30,14 @@
         android:id="@+id/spinner_meal"                
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"                        
+		android:layout_marginTop="8dp"                        
         android:entries="@array/array_meal_values" />    
     
     <Spinner
         android:id="@+id/spinner_when"               
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:entries="@array/array_when_values" />
     
     <EditText        
@@ -44,22 +45,41 @@
         android:hint="@string/hint_where"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"                                
+        android:layout_marginTop="8dp"                                
         style="@style/StyleEditText" />
-
+    
+    <Spinner
+        android:id="@+id/spinner_currency"               
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/array_currency_values" />
+    
+   	<SeekBar
+       	android:id="@+id/seekBar_cost"
+       	android:layout_width="fill_parent"       	
+       	android:layout_height="wrap_content"
+       	android:layout_marginTop="8dp"        	
+       	android:max="100"
+       	android:progress="30" />    
+        
 	<TextView
         android:id="@+id/textView_message"                
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"        
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         style="@style/StyleMessage" />
 
 	<Button
 	    android:id="@+id/button_send_message"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_marginTop="16dp"	    
+	    android:layout_marginTop="8dp"	    
 	    android:layout_gravity="right"	    
 	    android:text="@string/button_send_message" />
                 
+</LinearLayout>
+
+</ScrollView>
+
 </LinearLayout>
