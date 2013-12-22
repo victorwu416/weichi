@@ -72,6 +72,8 @@
         <item>价钱比较贵一点.</item>
     </string-array>
         
+    <string name="hint_message">短信</string>
+    
     <string name="button_send_message">发送短信</string>
     
     <string name="pick_contacts">选择联系人</string>

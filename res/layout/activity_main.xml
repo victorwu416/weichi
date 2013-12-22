@@ -16,44 +16,115 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"    
     android:orientation="vertical" >
+
+    <!-- Contacts -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal"
+    	android:layout_marginTop="8dp" >
     	
-    <EditText
-        android:id="@+id/editText_who"
-        android:hint="@string/hint_who"                     
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"                
-        style="@style/StyleEditText"        
-        android:focusable="false" />
+	    <ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/users"
+        	android:layout_marginRight="8dp" />
+	    	
+		<!--  android:text="周星驰: 130-1782-5820 | 蔡澜: 230-5383-1286" -->	    	   
+	    <EditText
+	        android:id="@+id/editText_who"
+	        android:hint="@string/hint_who"		                                   
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"	        	                              
+	        style="@style/StyleEditText"        
+	        android:focusable="false" />
+    </LinearLayout>
+
+    <!-- Meal -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal"
+    	android:layout_marginTop="8dp" >
+	    
+		<ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/cutlery"
+        	android:layout_marginRight="8dp" />
+        	    
+	    <Spinner
+	        android:id="@+id/spinner_meal"                
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"			                   
+	        android:entries="@array/array_meal_values" />   
+    </LinearLayout> 
+    
+	<!-- When -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal"
+    	android:layout_marginTop="8dp" >
+    
+		<ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/clock_o"
+        	android:layout_marginRight="8dp" />        
         
-    <Spinner
-        android:id="@+id/spinner_meal"                
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"                        
-        android:entries="@array/array_meal_values" />    
+	    <Spinner
+	        android:id="@+id/spinner_when"               
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"	        
+	        android:entries="@array/array_when_values" />
+	</LinearLayout>
     
-    <Spinner
-        android:id="@+id/spinner_when"               
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:entries="@array/array_when_values" />
+    <!-- Where -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal"
+    	android:layout_marginTop="8dp" >
+
+		<ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/road"
+        	android:layout_marginRight="8dp" />          
     
-    <EditText        
-        android:id="@+id/editText_where"
-        android:hint="@string/hint_where"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"                                
-        style="@style/StyleEditText" />
+	    <EditText        
+	        android:id="@+id/editText_where"
+	        android:hint="@string/hint_where"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"	                                   
+	        style="@style/StyleEditText" />
+	</LinearLayout>
+	
+    <!-- Cost -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal" 
+    	android:layout_marginTop="8dp">    
     
-    <Spinner
-        android:id="@+id/spinner_currency"               
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:entries="@array/array_currency_values" />
+		<ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/money"
+        	android:layout_marginRight="8dp" /> 
+        
+	    <Spinner
+	        android:id="@+id/spinner_currency"               
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"	        
+	        android:entries="@array/array_currency_values" />
+    </LinearLayout>
     
    	<SeekBar
        	android:id="@+id/seekBar_cost"
@@ -62,13 +133,28 @@
        	android:layout_marginTop="8dp"        	
        	android:max="100"
        	android:progress="30" />    
+    
+	<!-- Message -->
+    <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_vertical"     	    	   
+    	android:orientation="horizontal"
+    	android:layout_marginTop="8dp" > 
+   	
+		<ImageView 
+        	android:layout_width="32dp"
+        	android:layout_height="32dp"        	        
+        	android:src="@drawable/envelope_o"
+        	android:layout_marginRight="8dp" />        
         
-	<TextView
-        android:id="@+id/textView_message"                
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"        
-        android:layout_marginTop="8dp"
-        style="@style/StyleMessage" />
+		<TextView
+	        android:id="@+id/textView_message" 
+	        android:hint="@string/hint_message"               
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"                
+	        style="@style/StyleMessage" />		
+	</LinearLayout>
 
 	<Button
 	    android:id="@+id/button_send_message"
